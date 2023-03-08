@@ -1,4 +1,4 @@
-<script setup>
+<script>
 import HelloWorld from './components/HelloWorld.vue'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from "axios";
@@ -6,7 +6,7 @@ import { DOMDirectiveTransforms } from "@vue/compiler-dom";
 import { useAttrs } from "vue";
 
 export default {
-  // components: { TheHeader },
+  components: { TheHeader },
   data() {
     return {
 
