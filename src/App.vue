@@ -6,7 +6,7 @@ import { DOMDirectiveTransforms } from "@vue/compiler-dom";
 import { useAttrs } from "vue";
 
 export default {
-  components: { TheHeader },
+  components: { },
   data() {
     return {
 
@@ -19,6 +19,7 @@ export default {
     fetchrestaurants() {
       axios.get("http://127.0.0.1:8000/api/restaurants")
         .then((resp) => {
+          
           this.restaurants = (resp.data.restaurants);
 
         })
@@ -33,7 +34,7 @@ export default {
 </script>
 
 <template>
-  <div class="container">
+  <!-- <div class="container">
     <h1 class="mb-5">Cerca il tuo piatto preferito!</h1>
     <div class="row gap-4 text-white justify-content-center">
       <div class="col-3 bg-black pb-2">
@@ -79,11 +80,11 @@ export default {
         <div>Indiano</div>
       </div>
     </div>
-  </div>
-<RouterView :projects="projects"></RouterView>
+  </div> -->
+<RouterView :restaurants="restaurants"></RouterView>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @use "./styles/general.scss" as *;
 
 i {
