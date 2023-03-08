@@ -6,7 +6,7 @@ const router = createRouter({
     routes:[
         {
             path:"/Restaurants",
-            name:"Index",
+            name:"Restaurants",
             component: RestaurantsPage,
         }
     ]

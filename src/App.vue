@@ -6,27 +6,43 @@ import { DOMDirectiveTransforms } from "@vue/compiler-dom";
 import { useAttrs } from "vue";
 
 export default {
-  components: { },
+  pages: {},
   data() {
     return {
-
-      restaurants: []
-
+      categories:[],
+      restaurants: [],
+      filtered_restaurants: [],
+      filters:[],
     };
 
   },
   methods: {
-    fetchrestaurants() {
+    fetchdata() {
       axios.get("http://127.0.0.1:8000/api/restaurants")
         .then((resp) => {
-          
+          this.categories = (resp.data.categories);
           this.restaurants = (resp.data.restaurants);
-
         })
+    },
+    search(){
+      setTimeout(()=>{
+        this.restaurants.forEach(restaurant =>{
+
+          this.filters.forEach(filtro => {
+            
+            restaurant.categories.forEach(categoria => {
+              if (filtro == categoria.pivot.category_id) {
+                this.filtered_restaurants.push(restaurant);
+              }
+            });
+          });
+        }
+        );
+      },100)
     }
   },
   mounted() {
-    this.fetchrestaurants();
+    this.fetchdata();
 
   }
 
@@ -34,53 +50,18 @@ export default {
 </script>
 
 <template>
-  <!-- <div class="container">
+  <div class="container">
     <h1 class="mb-5">Cerca il tuo piatto preferito!</h1>
     <div class="row gap-4 text-white justify-content-center">
-      <div class="col-3 bg-black pb-2">
+
+      <div class="col-3 bg-black pb-2" v-for="category in categories" @click="search">
+        <input type="checkbox" :value="category.id" v-model="filters">
         <div><img src="" alt="" /></div>
-        <i class="fa-solid fa-pizza"></i>
-        <div>Pizza</div>
+        <div>{{ category.name }}</div>
       </div>
-      <div class="col-3 bg-black pb-2">
-        <div><img src="" alt="" /></div>
-        <i class="fa-solid fa-sushi"></i>
-        <div>Giapponese</div>
-      </div>
-      <div class="col-3 bg-black pb-2">
-        <div><img src="" alt="" /></div>
-        <div>Vegetariano</div>
-      </div>
-      <div class="col-3 bg-black pb-2">
-        <div><img src="" alt="" /></div>
-        <div>Dessert</div>
-      </div>
-      <div class="col-3 bg-black pb-2">
-        <div><img src="" alt="" /></div>
-        <div>Americano</div>
-      </div>
-      <div class="col-3 bg-black pb-2">
-        <div><img src="" alt="" /></div>
-        <div>Kebab</div>
-      </div>
-      <div class="col-3 bg-black pb-2">
-        <div><img src="" alt="" /></div>
-        <div>Italiano</div>
-      </div>
-      <div class="col-3 bg-black pb-2">
-        <div><img src="" alt="" /></div>
-        <div>Poke</div>
-      </div>
-      <div class="col-3 bg-black pb-2">
-        <div><img src="" alt="" /></div>
-        <div>Messicano</div>
-      </div>
-      <div class="col-3 bg-black pb-2">
-        <div><img src="" alt="" /></div>
-        <div>Indiano</div>
-      </div>
+
     </div>
-  </div> -->
+  </div> 
 <RouterView :restaurants="restaurants"></RouterView>
 </template>
 
