@@ -1,16 +1,20 @@
 <script>
 import axios from "axios";
+import {store} from "../../store.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 export default {
   data() {
     return {
+      store,  
       dishes: [],
+      restaurant: {},
     };
   },
   methods: {
     fetchdata() {
       axios.get("http://127.0.0.1:8000/api/dish/" + this.$route.params.id)
       .then((resp) => {
+        this.restaurant = resp.data.restaurant;
         resp.data.dish.forEach(dish => {
             if (dish.visible) {
                 this.dishes.push(dish);
@@ -27,7 +31,12 @@ export default {
 
 <template>
 <div class="container">
-    <div class="row row-cols-4 g-5 m-5">
+    <div class="" v-for="rest in restaurant">
+        <h2 class="margin-auto">{{rest.name}}</h2>
+        <h3 class="margin-auto">{{rest.description}}</h3>
+        <!-- <h3 class="margin-auto">{{rest.vat}}</h3> -->
+    </div>   
+        <div class="row row-cols-4 g-5 m-5">
         <div v-for="dish in dishes" >
             <div class="col" :key="dish.id" v-if="dish.visible">
               <div class="card bg-success h-100 w-100" style="width: 18rem">
