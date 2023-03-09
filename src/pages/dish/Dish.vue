@@ -22,9 +22,14 @@ export default {
         });
       });
     },
+    AddDish(dish){
+          this.store.ShoppingCart.push(dish);
+
+        },
   },
   mounted() {
     this.fetchdata();
+    console.log(this.$route.name);
   },
 };
 </script>
@@ -50,7 +55,7 @@ export default {
                   <h4 class="card-title">name: {{ dish.name }}</h4>
                   <p class="card-text">description: {{ dish.description }}</p>
                   <div class="card-text mb-3">{{ dish.price + "&#8364;" }}</div>
-                  <a :href="'/dish/' + dish.id" class="btn btn-primary">Aggiungi al carrello</a>
+                  <button @click="AddDish(dish)" class="btn btn-primary">Aggiungi al carrello</button>
                 </div>
               </div>
             </div>

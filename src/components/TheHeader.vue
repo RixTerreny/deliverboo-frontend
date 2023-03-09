@@ -1,5 +1,19 @@
 <script>
 import "bootstrap/dist/css/bootstrap.min.css";
+import {store} from "../store.js";
+export default {
+  data() {
+    return {
+      store,  
+    };
+  },
+  methods: {
+        
+  },
+  mounted() {
+    
+  },
+};
 </script>
 
 <template>
@@ -30,7 +44,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
                   <li class="nav-item">
                     <a class="nav-link" href="http://127.0.0.1:8000/">Backend</a>
                   </li>
-                  <li class="nav-item dropdown">
+
+                    <!-- menu destinato al carrello -->
+                  
+                  <li v-if="(this.$route.name === 'dish.show')" class="nav-item dropdown">
                     <a
                       class="nav-link dropdown-toggle"
                       href="#"
@@ -38,16 +55,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      Dropdown link
+                      Shopping-Cart {{this.store.ShoppingCart.length}}
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Action</a></li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
-                      <li>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                      </li>
+                      
+                      <li v-for="item in this.store.ShoppingCart"><div class="dropdown-item">{{item.name}}</div></li>
+                      
+                  
                     </ul>
                   </li>
+
+
+
                 </ul>
               </div>
             </div>
