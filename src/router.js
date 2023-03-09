@@ -8,7 +8,12 @@ const router = createRouter({
             path:"/Restaurants",
             name:"Restaurants",
             component: RestaurantsPage,
-        }
+        },
+        {
+            path: "/dish/:id",
+            name: "dish.show",
+            component: DishPage
+        },
     ]
 
 
