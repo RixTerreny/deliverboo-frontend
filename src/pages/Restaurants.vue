@@ -82,7 +82,7 @@ export default {
           <div class="card-body">
             <h4 class="card-title">name: {{ restaurant.name }}</h4>
             <p class="card-text">address: {{ restaurant.address }}</p>
-            <a href="#" class="btn btn-primary">Menù</a>
+            <a :href="'/dish/' + restaurant.id" class="btn btn-primary">Menù</a>
           </div>
         </div>
       </div>
