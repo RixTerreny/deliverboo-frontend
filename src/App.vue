@@ -2,7 +2,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import TheHeader from "./components/TheHeader.vue";
 import axios from "axios";
-import store from 'store';
+import {store} from './store';
 import { DOMDirectiveTransforms } from "@vue/compiler-dom";
 import { useAttrs } from "vue";
 
