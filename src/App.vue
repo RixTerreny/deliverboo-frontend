@@ -20,11 +20,12 @@ export default {
       axios.get("http://127.0.0.1:8000/api/restaurants").then((resp) => {
         this.categories = resp.data.categories;
         this.restaurants = resp.data.restaurants;
+        this.search();
       });
     },
     search() {
       setTimeout(() => {
-        if ((this.filters === [0])) {
+        if ((this.filters.length === 0)) {
           this.filteredRestaurants = this.restaurants;
         }
         else{
@@ -86,8 +87,7 @@ export default {
         <div class="card-body">
           <h4 class="card-title">name: {{ restaurant.name }}</h4>
           <p class="card-text">address: {{ restaurant.address }}</p>
-          <h5 class="card-text text-light">VAT: {{ restaurant.vat }}</h5>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <a href="#" class="btn btn-primary">Menù</a>
         </div>
       </div>
     </div>
