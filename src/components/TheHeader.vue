@@ -55,11 +55,11 @@ export default {
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      Shopping-Cart {{this.store.ShoppingCart.length}}
+                      Shopping-Cart {{this.store.totalCounter}}
                     </a>
                     <ul class="dropdown-menu">
                       
-                      <li v-for="item in this.store.ShoppingCart"><div class="dropdown-item">{{item.name}}</div></li>
+                      <li v-for="item in this.store.ShoppingCart"><div class="dropdown-item">{{item.name+ " " + item.counter}}</div></li>
                       
                   
                     </ul>

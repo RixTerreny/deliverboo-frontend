@@ -17,14 +17,18 @@ export default {
         this.restaurant = resp.data.restaurant;
         resp.data.dish.forEach(dish => {
             if (dish.visible) {
+                dish.counter = 0;
                 this.dishes.push(dish);
             }
         });
       });
     },
     AddDish(dish){
-          this.store.ShoppingCart.push(dish);
-
+      dish.counter ++;
+      this.store.totalCounter ++;
+      if (!this.store.ShoppingCart.includes(dish)) {
+        this.store.ShoppingCart.push(dish);
+      }
         },
   },
   mounted() {
