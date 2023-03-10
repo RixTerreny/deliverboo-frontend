@@ -30,6 +30,7 @@ export default {
         this.store.ShoppingCart.push(dish);
       }
         },
+    
   },
   mounted() {
     this.fetchdata();
