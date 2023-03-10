@@ -15,7 +15,7 @@ export default {
       axios.get("http://127.0.0.1:8000/api/restaurants").then((resp) => {
         this.categories = resp.data.categories;
         this.restaurants = resp.data.restaurants;
-       /*  this.search(); */
+        this.search();
       });
     },
     getFiltered($category) {
@@ -28,7 +28,7 @@ export default {
 
 
     
-    /* search() {
+    search() {
       setTimeout(() => {
         if (this.filters.length === 0) {
           this.filteredRestaurants = this.restaurants;
@@ -51,7 +51,7 @@ export default {
           });
         }
       }, 100);
-    } */
+    }
   },
   mounted() {
     this.fetchdata();
@@ -85,6 +85,8 @@ export default {
             /> -->
           <div class="card-body">
             <h4 class="card-title">name: {{ restaurant.name }}</h4>
+            <h4>categories:</h4>
+            <div class="card-title" v-for="categor in restaurant.categories">{{categor.name}}</div>
             <p class="card-text">address: {{ restaurant.address }}</p>
             <a :href="'/dish/' + restaurant.id" class="btn btn-primary">Menù</a>
           </div>
