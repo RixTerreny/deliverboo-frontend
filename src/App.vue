@@ -1,13 +1,13 @@
 <script>
 import "bootstrap/dist/css/bootstrap.min.css";
-import TheHeader from "./components/TheHeader.vue";
+import Home from "./components/Home.vue";
 import axios from "axios";
 import {store} from './store';
 import { DOMDirectiveTransforms } from "@vue/compiler-dom";
 import { useAttrs } from "vue";
 
 export default {
-  components: { TheHeader },
+  components: { Home },
   data() {
     return {
     };
@@ -17,7 +17,7 @@ export default {
 </script>
 
 <template>
-  <TheHeader></TheHeader>
+  <Home></Home>
 
 
   <RouterView ></RouterView>
