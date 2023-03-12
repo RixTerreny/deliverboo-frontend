@@ -17,11 +17,10 @@ export default {
 </script>
 
 <template>
-    <div class="d-flex justify-content-center">
-        <div class="fixed">
+    <div class="d-flex justify-content-end">
+        <div>
           <nav class="navbar navbar-expand-lg bg-body-tertiary ">
             <div class="container-fluid">
-              <a class="navbar-brand" href="#">Navbar</a>
               <button
                 class="navbar-toggler"
                 type="button"
@@ -36,13 +35,13 @@ export default {
               <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    <a class="nav-link active text-orange" aria-current="page" href="/">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/restaurants">Ristoranti</a>
+                    <a class="nav-link text-orange" href="/restaurants">Ristoranti</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="http://127.0.0.1:8000/">Backend</a>
+                    <a class="nav-link text-orange" href="http://127.0.0.1:8000/">Area Ristoratori</a>
                   </li>
 
                     <!-- menu destinato al carrello -->
@@ -82,5 +81,11 @@ top: 0;
 z-index: 999;
 margin: auto;
 background-color: gainsboro;
+}
+.text-orange {
+  color: orange !important;
+}
+.font-cat {
+  font-size: 23px;
 }
 </style>

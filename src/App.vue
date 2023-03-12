@@ -5,9 +5,10 @@ import axios from "axios";
 import {store} from './store';
 import { DOMDirectiveTransforms } from "@vue/compiler-dom";
 import { useAttrs } from "vue";
+import { RouterView } from "vue-router";
 
 export default {
-  components: { TheHeader },
+  components: { TheHeader, RouterView},
   data() {
     return {
     };
@@ -20,7 +21,7 @@ export default {
   <TheHeader></TheHeader>
 
 
-  <RouterView ></RouterView>
+  <RouterView></RouterView>
 </template>
 
 <style lang="scss">
