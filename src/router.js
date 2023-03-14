@@ -13,7 +13,7 @@ const router = createRouter({
         },
         {
             path: "/dish/:id",
-            name: "dish.show",
+            name: "dish.index",
             component: DishPage,
         },
         {
