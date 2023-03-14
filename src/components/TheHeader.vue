@@ -37,9 +37,7 @@ export default {
                   <li class="nav-item">
                     <a class="nav-link active text-orange" aria-current="page" href="/">Home</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link text-orange" href="/restaurants">Ristoranti</a>
-                  </li>
+                  
                   <li class="nav-item">
                     <a class="nav-link text-orange" href="http://127.0.0.1:8000/">Area Ristoratori</a>
                   </li>
