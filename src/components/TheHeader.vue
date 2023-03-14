@@ -37,6 +37,12 @@ export default {
                   <li class="nav-item">
                     <a class="nav-link active text-orange" aria-current="page" href="/">Home</a>
                   </li>
+<<<<<<< HEAD
+=======
+                  <li class="nav-item">
+                    <a class="nav-link text-orange" href="/restaurants">Ristoranti</a>
+                  </li>
+>>>>>>> parent of 031ac7f (Merge branch 'Paolo')
                   <li class="nav-item">
                     <a class="nav-link text-orange" href="http://127.0.0.1:8000/">Area Ristoratori</a>
                   </li>

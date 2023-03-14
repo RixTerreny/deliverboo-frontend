@@ -3,12 +3,16 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 export default {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 031ac7f (Merge branch 'Paolo')
     data() {
         return {
             categories: [],
             restaurants: [],
             filteredRestaurants: [],
             filters: [],
+<<<<<<< HEAD
             filtercategory: []
         };
     },
@@ -200,103 +204,79 @@ export default {
                 
               });
       
-            });
-  
-  
-        });
-        }else{
-          this.filtercategory.splice(this.filtercategory.indexOf($category), 1);
-          this.filteredRestaurants = [] ;
-        
-        this.filtercategory.forEach(element => {
-          
-          axios.get("http://127.0.0.1:8000/api/restaurants/category/" + element)
-            .then((resp) => {
-              
-              resp.data.restaurants.forEach(restaurant => {
-                if (this.filteredRestaurants.some(r => r.id === restaurant.id)){
-                  
-                  return;
-                  
-                }else{
-                  this.filteredRestaurants.push(restaurant);
-  
-                }
-                
-              });
-      
-            });
-  
-  
-        });
-
-
-        }
-        
-      
+=======
+        };
     },
-    getAllRestaurants() {
-      axios.get("http://127.0.0.1:8000/api/restaurants").then((resp) => {
-        this.filtercategory = [];
-        this.filteredRestaurants = [];
-        this.filteredRestaurants = resp.data.restaurants;
-        if(this.filtercategory.length === this.categories.length){
-
-        }else{
-          
-          this.categories.forEach((category) => {
-            this.filtercategory.push(category.id);});
-        }
-
-      });
-    },
-
-
-    
-    search() {
-      setTimeout(() => {
-        if (this.filters.length === 0) {
-          this.filteredRestaurants = this.restaurants;
-        } else {
-          this.filteredRestaurants = [];
-          this.restaurants.forEach((restaurant) => {
-            this.filters.forEach((filtro) => {
-              restaurant.categories.forEach((categoria) => {
-                if (
-                  filtro == categoria.pivot.category_id &&
-                  !this.filteredRestaurants.some(
-                    (filteredRestaurant) =>
-                      filteredRestaurant.id === restaurant.id
-                  )
-                ) {
-                  this.filteredRestaurants.push(restaurant);
-                }
-              });
+    methods: {
+        fetchdata() {
+            axios.get("http://127.0.0.1:8000/api/restaurants").then((resp) => {
+                this.categories = resp.data.categories;
+                this.restaurants = resp.data.restaurants;
+                this.search();
+>>>>>>> parent of 031ac7f (Merge branch 'Paolo')
             });
-          });
+        },
+        getFiltered($category) {
+            axios.get("http://127.0.0.1:8000/api/restaurants/category/" + $category)
+                .then((resp) => {
+                    this.filteredRestaurants.push(resp.data.restaurants);
+
+                });
+        },
+
+
+
+        search() {
+            setTimeout(() => {
+                if (this.filters.length === 0) {
+                    this.filteredRestaurants = this.restaurants;
+                } else {
+                    this.filteredRestaurants = [];
+                    this.restaurants.forEach((restaurant) => {
+                        this.filters.forEach((filtro) => {
+                            restaurant.categories.forEach((categoria) => {
+                                if (
+                                    filtro == categoria.pivot.category_id &&
+                                    !this.filteredRestaurants.some(
+                                        (filteredRestaurant) =>
+                                            filteredRestaurant.id === restaurant.id
+                                    )
+                                ) {
+                                    this.filteredRestaurants.push(restaurant);
+                                }
+                            });
+                        });
+                    });
+                }
+            }, 100);
         }
-      }, 100);
-    }
-  },
-  mounted() {
-    this.fetchdata();
-  },
+    },
+    mounted() {
+        this.fetchdata();
+    },
 };
 
 </script>
 
 <template>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 031ac7f (Merge branch 'Paolo')
     <div class="margin-bg" :style="{ backgroundImage: '../public/img/background-food.png' }">
         <div class="container bg-container">
             <img src="public/img/deliveboo.png" class="logo margin-logo" alt="">
             <h3 class="ms-2 mt-4 text-orange">Scegli cosa vuoi mangiare</h3>
             <div class="row gap-4 text-white justify-content-center space-category-top space-category-bottom">
+<<<<<<< HEAD
                 <!--  <h2 class="text-danger" v-if="(this.filtercategory != '' )|| (this.filtercategory.length == this.categories.length)">categorie attualmente selezionate: {{this.filtercategory}}</h2> -->
+=======
+>>>>>>> parent of 031ac7f (Merge branch 'Paolo')
                 <div class="col-3" v-for="category in categories">
                     <!-- <input type="checkbox" :value="category.id" v-model="filters" />
               <div><img src="" alt="" /></div>
               <div>{{ category.name }}</div> -->
+<<<<<<< HEAD
                     <button :class="{ 'bg-danger': this.filtercategory.includes(category.id) }" class="text-orange"
                         :key="category.id" type="button" @click="filterCategoryPush(category.id)">{{ category.name }}</button>
                 </div>
@@ -338,36 +318,14 @@ export default {
           <div>{{ category.name }}</div> -->
           <button :class="{'bg-danger': this.filtercategory.includes(category.id)} " :key="category.id" type="button" @click="filterCategoryPush(category.id)">{{category.name}}</button>
 >>>>>>> 031ac7faddb465959b0b4bb08b9ebb24345c823e
+=======
+                    <button class="text-orange font-cat bg-transparent" :key="category.id" type="button"
+                        @click="getFiltered(category.id)">{{ category.name }}</button>
+                </div>
+            </div>
+>>>>>>> parent of 031ac7f (Merge branch 'Paolo')
         </div>
-        <button class="text-orange font-cat bg-transparent"  type="button" @click="getAllRestaurants()">tutti i ristoranti</button>
-      </div>
-      
     </div>
-  </div>
-  
-  <h1 class="text-orange mb-5">Scegli il Ristorante:</h1>
-  <div class="container">
-    <div class="row row-cols-4 g-5">
-      <div class="col" v-for="restaurant in filteredRestaurants" :key="restaurant.id">
-        <div class="card bg-orange h-100 w-100" style="width: 18rem">
-          <img
-              v-if="restaurant.cover_img"
-              class="card-img-top"
-              src="http://127.0.0.1:8000/ + '/storage/' + restaurant.cover_img)"
-              alt="Card image cap"
-            />
-          <div class="card-body">
-            <h5 class="card-title">{{ restaurant.name }}</h5>
-            <h6 class="mt-5">Categorie:</h6>
-            <div class="card-title" v-for="categor in restaurant.categories">{{categor.name}}</div>
-            <h6 class="mt-5">Indirizzo:</h6>
-            <p class="card-text">{{ restaurant.address }}</p>
-            <a :href="'/dish/' + restaurant.id" class="btn btn-light mt-4">Menù</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </template>
 
 <style scoped>
@@ -409,10 +367,13 @@ export default {
 .margin-logo {
     margin-top: 30px;
 }
+<<<<<<< HEAD
 
 .selectedbtn {
 
   border-radius: 2px solid red;
 
 }
+=======
+>>>>>>> parent of 031ac7f (Merge branch 'Paolo')
 </style>
