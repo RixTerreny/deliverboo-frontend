@@ -47,7 +47,7 @@ export default {
 
                     <!-- menu destinato al carrello -->
                   
-                  <li v-if="(this.$route.name === 'dish.index')" class="nav-item dropdown">
+                  <li v-if="(this.$route.name === 'dish.show')" class="nav-item dropdown">
                     <a
                       class="nav-link dropdown-toggle"
                       href="#"

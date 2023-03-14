@@ -15,29 +15,26 @@ export default {
       axios.get("http://127.0.0.1:8000/api/dish/" + this.$route.params.id)
       .then((resp) => {
         this.restaurant = resp.data.restaurant;
-        resp.data.dishes.forEach(dish => {
+        resp.data.dish.forEach(dish => {
             if (dish.visible) {
                 dish.counter = 0;
                 this.dishes.push(dish);
-            };
+            }
         });
       });
     },
     AddDish(dish){
       dish.counter ++;
       this.store.totalCounter ++;
-      if(!this.store.ShoppingCart.includes(dish)) {
+      if (!this.store.ShoppingCart.includes(dish)) {
         this.store.ShoppingCart.push(dish);
       }
-      localStorage.setItem('cart', JSON.stringify(this.store.ShoppingCart));
-    }
+        },
     
   },
   mounted() {
     this.fetchdata();
-    let cart = localStorage.getItem('cart');
-     if (cart) { this.store.ShoppingCart = JSON.parse(cart); };
-
+    console.log(this.$route.name);
   },
 };
 </script>

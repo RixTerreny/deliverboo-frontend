@@ -6,7 +6,7 @@ const router = createRouter({
     routes:[
         {
             path: "/dish/:id",
-            name: "dish.index",
+            name: "dish.show",
             component: DishPage,
         },
         {
