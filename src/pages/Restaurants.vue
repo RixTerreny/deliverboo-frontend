@@ -153,12 +153,12 @@ export default {
       <img src="public/img/deliveboo.png" class="logo margin-logo" alt="">
       <h3 class="ms-2 mt-4 text-orange">Scegli cosa vuoi mangiare</h3>      
       <div class="row gap-4 text-white justify-content-center space-category-top space-category-bottom">
-       <!--  <h2 class="text-danger" v-if="(this.filtercategory != '' )|| (this.filtercategory.length == this.categories.length)">categorie attualmente selezionate: {{this.filtercategory}}</h2> -->
+        <h2 class="text-danger" v-if="(this.filtercategory != '' )|| (this.filtercategory.length == this.categories.length)">categorie attualmente selezionate: {{this.filtercategory}}</h2>
         <div class="col-3" v-for="category in categories">
           <!-- <input type="checkbox" :value="category.id" v-model="filters" />
           <div><img src="" alt="" /></div>
           <div>{{ category.name }}</div> -->
-          <button :class="{'bg-danger': this.filtercategory.includes(category.id)} " :key="category.id" type="button" @click="filterCategoryPush(category.id)">{{category.name}}</button>
+          <button class="text-orange font-cat bg-transparent" :class="{'bg-danger': this.filtercategory.includes(category.id)} " :key="category.id" type="button" @click="filterCategoryPush(category.id)">{{category.name}}</button>
         </div>
         <button class="text-orange font-cat bg-transparent"  type="button" @click="getAllRestaurants()">tutti i ristoranti</button>
       </div>
